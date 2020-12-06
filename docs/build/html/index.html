@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to CPU Scheduling Simulator’s documentation! &#8212; CPU Scheduling Simulator 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-cpu-scheduling-simulator-s-documentation">
+<h1>Welcome to CPU Scheduling Simulator’s documentation!<a class="headerlink" href="#welcome-to-cpu-scheduling-simulator-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="id1">
+<h2>_<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="demo">
+<h1>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h1>
+<img alt="FCFS" src="_images/fcfs.png" />
+<img alt="Shortest Remaining Time First" src="_images/sjf.png" />
+<img alt="Priority Non-Preemptive" src="_images/pr-np.png" />
+<img alt="Priority Preemptive" src="_images/pr-p.png" />
+<img alt="Shortest Remaining Time First" src="_images/srtf.png" />
+<img alt="Round Robin" src="_images/round-rbn.png" />
+<img alt="Comparison of Scheduling Algorithms" src="_images/comp.png" />
+</div>
+<div class="section" id="process">
+<h1>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="src.utils.process.Process">
+<em class="property">class </em><code class="sig-prename descclassname">src.utils.process.</code><code class="sig-name descname">Process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p_id</span></em>, <em class="sig-param"><span class="n">arrival_time</span></em>, <em class="sig-param"><span class="n">burst_time</span></em>, <em class="sig-param"><span class="n">priority</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/utils/process.html#Process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.utils.process.Process" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>p_id (int) : process ID</p></li>
+<li><p>arrival_time (int) : process Arriva time in ready queue</p></li>
+<li><p>burst_time (int) : Burst Time</p></li>
+<li><p>priority (int) : priority of the process , default: 1</p></li>
+</ul>
+</dd>
+<dt>Defaults:</dt><dd><ul class="simple">
+<li><p>self.waiting_time = 0</p></li>
+<li><p>self.return_time = 0</p></li>
+<li><p>self.turnaround_time = 0</p></li>
+<li><p>self.response_time = 0</p></li>
+<li><p>self.completed = False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>_</p>
+</div>
+<div class="section" id="scheduling-algorithms">
+<h1>Scheduling Algorithms<a class="headerlink" href="#scheduling-algorithms" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt>All the algorithms expects:</dt><dd><dl>
+<dt>Args:</dt><dd><p>processes (<a class="reference internal" href="#src.utils.process.Process" title="src.utils.process.Process"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.utils.process.Process</span></code></a>):  An array of process to be scheduled.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Dictionary.  the result of the scheduling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Algo Name&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;avg_waiting_time&#39;</span><span class="p">:</span> <span class="n">total_waiting_time</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">proc</span><span class="p">),</span>
+   <span class="s1">&#39;avg_response_time&#39;</span><span class="p">:</span> <span class="n">total_response_time</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">proc</span><span class="p">),</span>
+   <span class="s1">&#39;avg_turnaround_time&#39;</span><span class="p">:</span> <span class="n">total_turnaround_time</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">proc</span><span class="p">),</span>
+   <span class="s1">&#39;processes&#39;</span><span class="p">:</span> <span class="n">proc</span><span class="p">,</span> <span class="c1"># modified scheduled processes</span>
+   <span class="s1">&#39;gantt&#39;</span><span class="p">:</span> <span class="n">gantt</span> <span class="c1"># gantt chart array</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>_</p>
+</div>
+<div class="section" id="module-src.utils.table">
+<span id="tables"></span><h1>Tables<a class="headerlink" href="#module-src.utils.table" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="src.utils.table.plot">
+<code class="sig-prename descclassname">src.utils.table.</code><code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">processes</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/utils/table.html#plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#src.utils.table.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the given processes in a tabular format</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>processes (Array : <a class="reference internal" href="#src.utils.process.Process" title="src.utils.process.Process"><code class="xref py py-class docutils literal notranslate"><span class="pre">src.utils.process.Process</span></code></a>): processed processes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>_</p>
+</div>
+<div class="section" id="graphs">
+<h1>Graphs<a class="headerlink" href="#graphs" title="Permalink to this headline">¶</a></h1>
+<p>Visual representation of Scheduling Algorithms</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">CPU Scheduling Simulator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Anish Aggarwal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
